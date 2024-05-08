@@ -3,6 +3,10 @@
 @fedify/markdown-it-mention
 ===========================
 
+[![JSR][JSR badge]][JSR]
+[![npm][npm badge]][npm]
+[![GitHub Actions][GitHub Actions badge]][GitHub Actions]
+
 This is a [markdown-it] plugin that parses and renders Mastodon-style @mentions,
 e.g., `@username@domain.com`.  It converts them to a link, e.g.:
 
@@ -41,6 +45,12 @@ md.render(
 console.log(env.mentions);  // ["@foo@bar.com", "@baz@qux.com"]
 ~~~~
 
+[JSR]: https://jsr.io/@fedify/markdown-it-mention
+[JSR badge]: https://jsr.io/badges/@fedify/markdown-it-mention
+[npm]: https://www.npmjs.com/package/@fedify/markdown-it-mention
+[npm badge]: https://img.shields.io/npm/v/%40fedify%2Fmarkdown-it-mention?logo=npm
+[GitHub Actions]: https://github.com/dahlia/markdown-it-mention/actions/workflows/main.yaml
+[GitHub Actions badge]: https://github.com/dahlia/markdown-it-mention/actions/workflows/main.yaml/badge.svg
 [markdown-it]: https://github.com/markdown-it/markdown-it
 [options]: https://jsr.io/@fedify/markdown-it-mention/doc/~/PluginOptions
 

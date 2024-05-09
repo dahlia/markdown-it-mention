@@ -73,7 +73,7 @@ function parseMention(state: StateCore, options?: PluginOptions) {
 }
 
 const MENTION_PATTERN =
-  /@[\p{L}\p{N}._-]+@(?:[\p{L}\p{N}][\p{L}\p{N}_-]*.)+[\p{L}\p{N}]{2,}/giu;
+  /@[\p{L}\p{N}._-]+@(?:[\p{L}\p{N}][\p{L}\p{N}_-]*\.)+[\p{L}\p{N}]{2,}/giu;
 
 function splitTokens(
   token: Token,

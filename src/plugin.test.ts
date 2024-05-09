@@ -14,7 +14,7 @@ Deno.test("mention()", () => {
     `\
 **Hello**, *@hongminhee@mastodon.social*!
 
-> @hongminhee@todon.eu
+> @hongminhee@todon.eu 테스트
 
 [This should be ignored: @hongminhee@wizard.casa](https://example.com/)
 
@@ -31,7 +31,7 @@ Deno.test("mention()", () => {
     `\
 <p><strong>Hello</strong>, <em><a  href="acct:@hongminhee@mastodon.social"><span class="at">@</span><span class="user">hongminhee</span></a></em>!</p>
 <blockquote>
-<p><a  href="acct:@hongminhee@todon.eu"><span class="at">@</span><span class="user">hongminhee</span></a></p>
+<p><a  href="acct:@hongminhee@todon.eu"><span class="at">@</span><span class="user">hongminhee</span></a> 테스트</p>
 </blockquote>
 <p><a href="https://example.com/">This should be ignored: @hongminhee@wizard.casa</a></p>
 <p><a href="">This also should be ignored: @foo@bar.com</a></p>

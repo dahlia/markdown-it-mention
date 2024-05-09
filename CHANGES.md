@@ -6,7 +6,7 @@ Changelog
 Version 0.1.1
 -------------
 
-To be released.
+Released on May 9, 2024.
 
  -  Fixed a bug where the mention syntax followed by a space and words had been
     recognized as a mention with the following words.

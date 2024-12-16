@@ -24,8 +24,8 @@ import { mention, toFullHandle } from "@fedify/markdown-it-mention";
 
 const md = new MarkdownIt();
 md.use(mention, {
-  link: (handle: string) => `https://example.com/${handle}`,
-  linkAttributes: (handle: string) => ({ class: "mention" }),
+  link: (handle: string, env: any) => `https://example.com/${handle}`,
+  linkAttributes: (handle: string, env: any) => ({ class: "mention" }),
   label: toFullHandle,
 });
 ~~~~

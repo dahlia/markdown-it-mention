@@ -3,9 +3,11 @@ import { escape } from "@std/html";
 /**
  * Converts a full handle to a bare handle.
  * @param handle The full handle.
+ * @param env The environment.
  * @returns The bare handle without the domain in HTML.
  */
-export function toBareHandle(handle: string): string {
+// deno-lint-ignore no-explicit-any
+export function toBareHandle(handle: string, _env: any): string {
   const idx = handle.indexOf("@", 1);
   if (idx < 0) {
     return `<span class="at">@</span><span class="user">${
@@ -20,9 +22,11 @@ export function toBareHandle(handle: string): string {
 /**
  * Does nothing, but just returns the full handle in HTML.
  * @param handle The full handle.
+ * @param env The environment.
  * @returns The full handle.
  */
-export function toFullHandle(handle: string): string {
+// deno-lint-ignore no-explicit-any
+export function toFullHandle(handle: string, _env: any): string {
   const idx = handle.indexOf("@", 1);
   if (idx < 0) {
     return `<span class="at">@</span><span class="user">${

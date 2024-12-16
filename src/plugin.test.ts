@@ -42,15 +42,22 @@ Deno.test("mention()", () => {
     html: true,
   });
   md2.use(mention, {
-    link: (handle: string) =>
-      handle.endsWith("@bar.com") ? `https://example.com/${handle}` : null,
-    linkAttributes: (handle: string) => ({
-      class: "mention",
+    // deno-lint-ignore no-explicit-any
+    link: (handle: string, env: any) =>
+      handle.endsWith(`@${env.domain}`)
+        ? `https://example.com/${handle}`
+        : null,
+    // deno-lint-ignore no-explicit-any
+    linkAttributes: (handle: string, env: any) => ({
+      ...env.attrs,
       "data-handle": handle,
     }),
     label: toFullHandle,
   });
-  const html2 = md2.render("# @foo@bar.com\n\n> @baz@qux.com");
+  const html2 = md2.render("# @foo@bar.com\n\n> @baz@qux.com", {
+    domain: "bar.com",
+    attrs: { class: "mention" },
+  });
   assertEquals(
     html2,
     '<h1><a  class="mention" data-handle="@foo@bar.com" href="https://example.com/@foo@bar.com">' +

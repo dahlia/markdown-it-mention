@@ -8,6 +8,13 @@ Version 0.2.0
 
 To be released.
 
+ -  `PluginOptions.link()` became to have the second parameter which takes
+    a markdown-it environment object.
+ -  `PluginOptions.linkAttributes()` became to have the second parameter which
+    takes a markdown-it environment object.
+ -  `PluginOptions.label()` became to have the second parameter which takes
+    a markdown-it environment object.
+
 
 Version 0.1.1
 -------------

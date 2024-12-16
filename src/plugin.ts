@@ -14,19 +14,31 @@ export interface PluginOptions {
   /**
    * A function to render a link href for a mention.  If it returns `null`,
    * the mention will be rendered as plain text.  `acct:${handle}` by default.
+   * @param handle The handle, e.g., `"@john@example.com"`.
+   * @param env The environment.
+   * @returns The link href or `null` if the mention should be plain text.
    */
-  link?: (handle: string) => string | null;
+  // deno-lint-ignore no-explicit-any
+  link?: (handle: string, env: any) => string | null;
 
   /**
    * A function to render extra attributes for a mention link.
+   * @param handle The handle, e.g., `"@john@example.com"`.
+   * @param env The environment.
+   * @returns The extra attributes of the link (`<a>` tag).
    */
-  linkAttributes?: (handle: string) => Record<string, string>;
+  // deno-lint-ignore no-explicit-any
+  linkAttributes?: (handle: string, env: any) => Record<string, string>;
 
   /**
    * A function to render a label for a mention link.  {@link toBareHandle}
    * by default.
+   * @param handle The handle, e.g., `"@john@example.com"`.
+   * @param env The environment.
+   * @returns The label of the link in HTML.
    */
-  label?: (handle: string) => string;
+  // deno-lint-ignore no-explicit-any
+  label?: (handle: string, env: any) => string;
 }
 
 /**
@@ -93,7 +105,7 @@ function splitTokens(
       tokens.push(token);
     }
 
-    const href = options?.link?.(match[0]);
+    const href = options?.link?.(match[0], state.env);
     if (href == null && options?.link != null) {
       const token = new state.Token("text", "", 0);
       token.content = match[0];
@@ -104,9 +116,10 @@ function splitTokens(
     }
 
     const token = new state.Token("mention", "", 0);
-    token.content = options?.label?.(match[0]) ?? toBareHandle(match[0]);
+    token.content = options?.label?.(match[0], state.env) ??
+      toBareHandle(match[0], state.env);
     token.level = level;
-    const attrs = options?.linkAttributes?.(match[0]) ?? {};
+    const attrs = options?.linkAttributes?.(match[0], state.env) ?? {};
     attrs.href = href ?? `acct:${match[0]}`;
     token.attrs = Object.entries(attrs);
     token.info = match[0];

@@ -1,6 +1,6 @@
 {
   "name": "@fedify/markdown-it-mention",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "exports": "./mod.ts",
   "imports": {
     "@deno/dnt": "jsr:@deno/dnt@^0.41.1",
@@ -11,6 +11,7 @@
   },
   "exclude": [
     ".dnt-import-map.json",
+    ".github/",
     "npm/"
   ],
   "lock": false,
